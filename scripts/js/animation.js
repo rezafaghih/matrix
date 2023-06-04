@@ -15,6 +15,16 @@ const items = document.querySelectorAll("[animation]");
 
 function isItemInScreenZone(){
   // chek html element position is between start of offset height and end of offset height
+  element_top = importElementPoistion(items[i], false);
+  element_bottom = importElementPoistion(items[i], true);
+
+  var scrollTop = window.pageYOffset
+
+  if (scrollTop > element_top && scrollTop < element_bottom){
+    return true;
+  }else{
+    return false;
+  }
 }
 
 
@@ -30,9 +40,6 @@ function processAnimation()
 }
 
 window.addEventListener("scroll", processAnimation)
-
-// processAnimation()
-
 
 
 async function fetchAnimation(){
