@@ -13,10 +13,10 @@ function importElementPoistion(el, max_content)
 const items = document.querySelectorAll("[animation]");
 
 
-function isItemInScreenZone(){
+function isItemInScreenZone(el){
   // chek html element position is between start of offset height and end of offset height
-  element_top = importElementPoistion(items[i], false);
-  element_bottom = importElementPoistion(items[i], true);
+  element_top = importElementPoistion(el, false);
+  element_bottom = importElementPoistion(el, true);
 
   var scrollTop = window.pageYOffset
 
@@ -27,15 +27,22 @@ function isItemInScreenZone(){
   }
 }
 
+function getAnimationIsSync(){
+
+}
+
+
+
 
 function processAnimation()
 {
   var scrollTop = window.pageYOffset
   for (let i =0; i<items.length; i++){
     element_top = importElementPoistion(items[i], false);
-    if (scrollTop+window.innerHeight > element_top){
+    if (isItemInScreenZone(items[i]) == true){
         console.log(`more than ${i}`);
     }
+    
   }
 }
 
